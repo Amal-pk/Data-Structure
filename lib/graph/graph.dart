@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-class DFS<T> { 
+class DFS<T> {
   final HashMap<T, List<T>> _adj = HashMap();
   final List<Set<T>> groups = [];
 
@@ -19,7 +19,6 @@ class DFS<T> {
     for (T t in _adj.keys) {
       if (vertex[t] == false) {
         Set<T> group = HashSet();
-        //  var grop = grou group;
         _dfs(t, vertex, group);
         groups.add(group);
       }
@@ -33,12 +32,70 @@ class DFS<T> {
       if ((vertex[x] ?? true) == false) _dfs(x, vertex, group);
     }
   }
-
-  Set<T> getSF(T a) {
-    if (groups.isEmpty) findGroup();
-    var result = groups.firstWhere((element) => element.contains(a),
-        orElse: () => <T>{});
-    if (result.isNotEmpty) result.remove(a);
-    return result;
-  }
 }
+
+void main() {
+  DFS<int> g = DFS();
+  g.addFriendship(20, 1);
+  g.addFriendship(20, 18);
+  g.addFriendship(1, 20);
+  g.addFriendship(16, 4);
+  g.addFriendship(18, 11);
+  g.addFriendship(11, 1);
+  g.addFriendship(12, 14);
+  g.addFriendship(18, 12);
+  g.addFriendship(20, 11);
+  g.addFriendship(20, 12);
+  g.addFriendship(4, 16);
+  g.addFriendship(11, 4);
+  g.addFriendship(4, 14);
+
+  g.findGroup();
+  print(g.groups);
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // print("Friends :" + g.getSF(4).toString());
+
+
+ // Set<T> getSF(T a) {
+  //   if (groups.isEmpty) findGroup();
+  //   var result = groups.firstWhere((element) => element.contains(a),
+  //       orElse: () => <T>{});
+  //   if (result.isNotEmpty) result.remove(a);
+  //   return result;
+  // }

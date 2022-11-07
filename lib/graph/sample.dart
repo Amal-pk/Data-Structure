@@ -12,13 +12,13 @@ class Vertex {
 
   Vertex(this.id, this.data);
 
-  // @override
+  @override
   bool operator ==(Object other) => other is Vertex && other.id == id;
 
-  // @override
+  @override
   int get hashCode => id.hashCode;
 
-  // @override
+  @override
   String toString() => '<$id -> $data>';
 }
 
